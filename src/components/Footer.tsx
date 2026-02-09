@@ -5,15 +5,15 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-white py-6 px-6 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-start text-center md:text-left">
 
           {/* Brand & Socials - Compact */}
-          <div className="col-span-1 md:col-span-1">
+          <div className="flex flex-col items-center md:items-start">
             <span className="text-xl font-bold tracking-tight text-[#1a2e1a] block mb-3">
               DIY DEALER
             </span>
             <p className="text-gray-500 text-sm mb-4 leading-relaxed">
-              Professional garden staging and design.
+              Professional garden design & staging.
             </p>
             <div className="flex gap-3">
               {['instagram', 'linkedin', 'facebook', 'pinterest'].map(social => (
@@ -25,38 +25,23 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links - Condensed */}
-          <div>
+          {/* Links - Services */}
+          <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Services</h5>
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
-              <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">Concept Visualization</a></li>
-              <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">Style Comparison</a></li>
-              <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">Full Build Plans</a></li>
+              <li><a href="#visible-offers" className="hover:text-[#1a2e1a] transition-colors">Quick Vision</a></li>
+              <li><a href="#visible-offers" className="hover:text-[#1a2e1a] transition-colors">Dual Vision</a></li>
+              <li><a href="#visible-offers" className="hover:text-[#1a2e1a] transition-colors">Signature Design</a></li>
             </ul>
           </div>
 
-          <div>
+          {/* Links - Company */}
+          <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Company</h5>
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
               <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">Contact</a></li>
+              <li><a href="#testimonials" className="hover:text-[#1a2e1a] transition-colors">Testimonials</a></li>
             </ul>
-          </div>
-
-          {/* Newsletter - Minimalist */}
-          <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
-            <h5 className="font-bold text-[#1a2e1a] mb-2 text-sm">Design Tips</h5>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Email address"
-                className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#1a2e1a] text-gray-800 placeholder:text-gray-400"
-              />
-              <button className="bg-[#1a2e1a] text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-green-800 transition-colors">
-                Go
-              </button>
-            </form>
           </div>
         </div>
 
