@@ -6,18 +6,22 @@
     z-index: 999;
     width: 100%;
     padding-top: 17px;
-    background: none;
+    background: transparent !important;
+    /* Transparent as requested */
     overflow: hidden;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-    opacity: 0;
-    top: -100px;
+    opacity: 1;
+    /* Always visible */
     padding-bottom: 6px;
     font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Vertical center */
+    backdrop-filter: none;
+    /* Removed blur for full transparency */
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
 }
 
 @media only screen and (max-width: 766px) {
@@ -36,13 +40,13 @@
 }
 
 .sticky {
-    background-color: rgba(15, 23, 42, 0.6) !important;
-    /* Dark Slate-ish transparent for premium blur */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    /* Styles are now default, sticky class might just double confirm or be redundant */
+    background: transparent !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     opacity: 1;
     top: 0px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: none;
 }
 
 .row {
@@ -61,8 +65,8 @@
 .logo {
     display: block !important;
     position: absolute;
-    left: 0px;
-    /* Moved 20px left (from 20px) */
+    left: -50px;
+    /* Moved 50px further left (from 0px) */
     color: #fff !important;
     /* Force white text */
     text-decoration: none;
@@ -168,8 +172,12 @@
     .logo {
         display: block !important;
         /* Show logo on mobile for brand context */
+        position: relative;
+        /* Reset position for flow */
+        left: auto;
+        /* Reset left */
         float: left;
-        margin-left: 20px;
+        margin-left: 0;
         font-size: 20px;
         color: #fff;
     }
