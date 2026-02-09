@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <span className="text-xl font-bold tracking-tight text-[#1a2e1a] block mb-3">
               DIY DEALER DESIGNS
             </span>
-            <p className="text-gray-500 text-sm mb-2 leading-relaxed">
+            <p className="text-gray-500 text-sm mb-8 leading-relaxed">
               Professional garden designs & staging.
             </p>
             <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">
