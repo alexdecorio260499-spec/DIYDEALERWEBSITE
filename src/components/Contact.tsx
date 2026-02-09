@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col pt-20 md:pt-24">
             {/* Hero Section */}
-            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-8">
+            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-2">
                 <div className="max-w-4xl mx-auto text-center">
                     <h1 className="text-3xl md:text-5xl font-serif mb-1">Contact Us</h1>
                     <p className="text-lg text-white/80 max-w-2xl mx-auto">
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
             </section>
 
             {/* Content Section */}
-            <section className="flex-grow py-20 px-6">
+            <section className="flex-grow py-8 px-6">
                 <div className="max-w-xl mx-auto bg-white/95 p-8 md:p-12 rounded-xl shadow-lg backdrop-blur-sm">
                     {status === 'success' ? (
                         <div className="text-center py-10">
