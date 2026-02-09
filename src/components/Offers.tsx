@@ -77,16 +77,16 @@ const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {offers.map((offer, index) => (
           <div
             key={index}
             onClick={() => setActiveOffer(index)}
             className={`
-              relative p-8 rounded-2xl cursor-pointer transition-all duration-500 border-2
+              relative p-6 rounded-2xl cursor-pointer transition-all duration-500 border-2 flex flex-col h-full
               ${offer.gradient}
               ${offer.border}
-              ${index === 1 ? 'shadow-2xl scale-110 z-20' : 'shadow-lg hover:shadow-xl hover:-translate-y-1 scale-100'}
+              ${index === 1 ? 'shadow-2xl scale-105 z-20' : 'shadow-lg hover:shadow-xl hover:-translate-y-1 scale-100'}
             `}
           >
             {offer.popular && (
@@ -106,9 +106,9 @@ const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
               <span className="text-sm opacity-75 font-medium">/project</span>
             </div>
 
-            <p className="text-sm opacity-80 mb-6 h-6 font-medium leading-tight">{offer.description}</p>
+            <p className="text-sm opacity-80 mb-4 h-6 font-medium leading-tight">{offer.description}</p>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2 mb-6">
               {offer.features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-medium opacity-90">
                   {/* Unified checkmark style for dark background */}
@@ -128,7 +128,7 @@ const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
                 onSelectPlan(offer);
               }}
               className={`
-              w-full py-3.5 rounded-xl text-sm font-bold tracking-wide transition-all shadow-sm
+              w-full py-3.5 rounded-xl text-sm font-bold tracking-wide transition-all shadow-sm mt-auto
               ${offer.button}
             `}>
               Select Plan
