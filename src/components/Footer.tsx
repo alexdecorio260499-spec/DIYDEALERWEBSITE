@@ -2,7 +2,7 @@
 import React from 'react';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about') => void;
+  onNavigate?: (page: 'home' | 'about' | 'terms' | 'privacy') => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -10,6 +10,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     e.preventDefault();
     if (href === '#about') {
       onNavigate?.('about');
+    } else if (href === '#terms') {
+      onNavigate?.('terms');
+    } else if (href === '#privacy') {
+      onNavigate?.('privacy');
     } else {
       onNavigate?.('home');
       setTimeout(() => {
@@ -58,6 +62,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
               <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-[#1a2e1a] transition-colors">About Us</a></li>
               <li><a href="#testimonials" onClick={(e) => handleLinkClick(e, '#testimonials')} className="hover:text-[#1a2e1a] transition-colors">Testimonials</a></li>
+              <li><a href="#terms" onClick={(e) => handleLinkClick(e, '#terms')} className="hover:text-[#1a2e1a] transition-colors">Terms & Conditions</a></li>
+              <li><a href="#privacy" onClick={(e) => handleLinkClick(e, '#privacy')} className="hover:text-[#1a2e1a] transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
         </div>
