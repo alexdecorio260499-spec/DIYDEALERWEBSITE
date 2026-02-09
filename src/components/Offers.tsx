@@ -48,7 +48,7 @@ const offers: Offer[] = [
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
     button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]',
-    hostedButtonId: 'ZQQKJSDB3EXGU' // Fallback to basic plan ID until specific ID is provided
+    hostedButtonId: 'RE5EAZ5UMHTRN'
   },
 ];
 
