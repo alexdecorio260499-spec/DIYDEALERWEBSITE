@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 
 interface HeaderProps {
-  onNavigate?: (page: 'home' | 'about') => void;
+  onNavigate?: (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
@@ -31,8 +31,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
     if (href === '#about') {
       onNavigate?.('about');
+    } else if (href === '#contact') {
+      onNavigate?.('contact');
     } else if (href === '/') {
       onNavigate?.('home');
+      window.scrollTo(0, 0);
     } else {
       // For hash links, we need to ensure we're on home first
       onNavigate?.('home');
@@ -44,14 +47,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     }
   };
 
-  // Sections found in the code or implicit
-  // Replacing old links with the site's actual links but structure of new header
   const links = [
     { name: 'Our Services', href: '#visible-offers' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'About Us', href: '#about' },
   ];
-
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${sticky ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
@@ -77,6 +77,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               {link.name}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={(e) => handleLinkClick(e, '#contact')}
+            className="bg-white text-[#1a2e1a] px-6 py-2 rounded-full font-bold text-sm tracking-wide hover:bg-gray-100 transition-colors shadow-md uppercase"
+          >
+            Contact
+          </a>
         </nav>
 
         {/* Mobile Hamburger Icon */}
@@ -99,11 +106,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
                 className="text-white text-2xl font-serif font-light tracking-wider hover:text-primary transition-colors"
-              // Close menu handled in handleLinkClick
               >
                 {link.name}
               </a>
             ))}
+            <a
+              href="#contact"
+              onClick={(e) => handleLinkClick(e, '#contact')}
+              className="text-white text-2xl font-serif font-light tracking-wider hover:text-primary transition-colors"
+            >
+              Contact Us
+            </a>
           </nav>
         </div>
       </div>

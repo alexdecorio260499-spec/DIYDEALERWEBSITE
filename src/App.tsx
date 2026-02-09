@@ -10,11 +10,12 @@ import luxuryGardenBg from './assets/luxury-garden-after.jpg';
 import About from './components/About';
 import Terms from './components/Terms';
 import Privacy from './components/Privacy';
+import Contact from './components/Contact';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Offer | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy' | 'contact'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +25,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (page: 'home' | 'about' | 'terms' | 'privacy') => {
+  const handleNavigate = (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact') => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
@@ -60,6 +61,7 @@ const App: React.FC = () => {
         {currentPage === 'about' && <About />}
         {currentPage === 'terms' && <Terms />}
         {currentPage === 'privacy' && <Privacy />}
+        {currentPage === 'contact' && <Contact />}
       </main>
 
       {/* Footer with Navigation Prop */}
