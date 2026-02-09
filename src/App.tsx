@@ -54,21 +54,7 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* Persistent CTA - Mobile Only */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%]">
-        <button
-          onClick={() => {
-            const offersSection = document.getElementById('offers');
-            if (offersSection) offersSection.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="w-full bg-primary text-white py-4 rounded-full font-bold shadow-2xl flex items-center justify-center gap-2 transition-transform active:scale-95"
-        >
-          Start My Design
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </button>
-      </div>
+
 
       {/* Scroll Down Indicator - Desktop (Bottom Right) */}
       {!scrolled && (

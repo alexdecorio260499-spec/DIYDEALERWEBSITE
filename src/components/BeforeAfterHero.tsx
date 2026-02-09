@@ -3,7 +3,7 @@ import React from 'react';
 const BeforeAfterHero: React.FC = () => {
     return (
         <section
-            className="relative h-[50vh] md:h-[55vh] overflow-hidden select-none"
+            className="relative min-h-[60vh] md:min-h-[55vh] flex flex-col justify-center overflow-hidden select-none"
         >
             {/* Background Image moved to global App.tsx for fixed effect */}
 

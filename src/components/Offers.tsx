@@ -86,7 +86,7 @@ const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
               relative p-6 rounded-2xl cursor-pointer transition-all duration-500 border-2 flex flex-col h-full
               ${offer.gradient}
               ${offer.border}
-              ${index === 1 ? 'shadow-2xl scale-105 z-20' : 'shadow-lg hover:shadow-xl hover:-translate-y-1 scale-100'}
+              ${index === 1 ? 'shadow-2xl md:scale-105 z-20' : 'shadow-lg hover:shadow-xl hover:-translate-y-1 scale-100'}
             `}
           >
             {offer.popular && (
