@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 
 // Unified Dark Green Theme for all cards
-const offers = [
+export interface Offer {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  popular: boolean;
+  gradient: string;
+  border: string;
+  button: string;
+}
+
+const offers: Offer[] = [
   {
     title: "Quick Vision",
     price: "€69",
@@ -37,7 +48,11 @@ const offers = [
   },
 ];
 
-const Offers: React.FC = () => {
+interface OffersProps {
+  onSelectPlan: (plan: Offer) => void;
+}
+
+const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
   const [activeOffer, setActiveOffer] = useState(1);
 
   return (
@@ -87,7 +102,12 @@ const Offers: React.FC = () => {
               ))}
             </ul>
 
-            <button className={`
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelectPlan(offer);
+              }}
+              className={`
               w-full py-3.5 rounded-xl text-sm font-bold tracking-wide transition-all shadow-sm
               ${offer.button}
             `}>
