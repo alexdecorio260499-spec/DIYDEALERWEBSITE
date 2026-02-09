@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const [sticky, setSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
+      setSticky(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -26,19 +25,43 @@ const Header: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    closeMobileMenu();
+
+    if (href === '#about') {
+      onNavigate?.('about');
+    } else if (href === '/') {
+      onNavigate?.('home');
+    } else {
+      // For hash links, we need to ensure we're on home first
+      onNavigate?.('home');
+      // Small timeout to allow render before scrolling
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   // Sections found in the code or implicit
   // Replacing old links with the site's actual links but structure of new header
   const links = [
     { name: 'Our Services', href: '#visible-offers' },
     { name: 'Testimonials', href: '#testimonials' },
-    { name: 'About Us', href: '#' },
+    { name: 'About Us', href: '#about' },
   ];
 
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${sticky ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="font-serif text-2xl md:text-3xl text-white font-bold tracking-wider relative z-50">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <a
+          href="/"
+          onClick={(e) => handleLinkClick(e, '/')}
+          className="text-white text-2xl font-bold tracking-tight z-50 relative font-serif"
+        >
           DIY DEALER DESIGNS
         </a>
 
@@ -48,6 +71,7 @@ const Header: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className="text-white text-sm font-medium tracking-wide hover:opacity-80 transition-opacity uppercase"
             >
               {link.name}
@@ -73,8 +97,9 @@ const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="text-white text-2xl font-serif font-light tracking-wider hover:text-primary transition-colors"
-                onClick={closeMobileMenu}
+              // Close menu handled in handleLinkClick
               >
                 {link.name}
               </a>

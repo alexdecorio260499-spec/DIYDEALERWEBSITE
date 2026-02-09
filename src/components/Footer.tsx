@@ -1,7 +1,24 @@
 
 import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href === '#about') {
+      onNavigate?.('about');
+    } else {
+      onNavigate?.('home');
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   return (
     <footer className="bg-white py-6 px-6 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
@@ -29,9 +46,9 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Services</h5>
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
-              <li><a href="#visible-offers" className="hover:text-[#1a2e1a] transition-colors">Quick Vision</a></li>
-              <li><a href="#visible-offers" className="hover:text-[#1a2e1a] transition-colors">Dual Vision</a></li>
-              <li><a href="#visible-offers" className="hover:text-[#1a2e1a] transition-colors">Signature Design</a></li>
+              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#1a2e1a] transition-colors">Quick Vision</a></li>
+              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#1a2e1a] transition-colors">Dual Vision</a></li>
+              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#1a2e1a] transition-colors">Signature Design</a></li>
             </ul>
           </div>
 
@@ -39,8 +56,8 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Company</h5>
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
-              <li><a href="#" className="hover:text-[#1a2e1a] transition-colors">About Us</a></li>
-              <li><a href="#testimonials" className="hover:text-[#1a2e1a] transition-colors">Testimonials</a></li>
+              <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-[#1a2e1a] transition-colors">About Us</a></li>
+              <li><a href="#testimonials" onClick={(e) => handleLinkClick(e, '#testimonials')} className="hover:text-[#1a2e1a] transition-colors">Testimonials</a></li>
             </ul>
           </div>
         </div>

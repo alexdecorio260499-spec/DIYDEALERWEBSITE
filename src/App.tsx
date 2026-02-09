@@ -7,9 +7,12 @@ import Footer from './components/Footer';
 import Checkout from './components/Checkout';
 import luxuryGardenBg from './assets/luxury-garden-after.jpg';
 
+import About from './components/About';
+
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Offer | null>(null);
+  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,32 +22,47 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavigate = (page: 'home' | 'about') => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen font-sans selection:bg-secondary selection:text-white relative">
-      {/* Global Fixed Background */}
-      <div
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${luxuryGardenBg})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
+      {/* Global Fixed Background (only for Home) */}
+      {currentPage === 'home' && (
+        <div
+          className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${luxuryGardenBg})`,
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+      )}
 
-      <Header />
+      {/* Header with Navigation Prop */}
+      <Header onNavigate={handleNavigate} />
 
       <main>
-        <BeforeAfterHero />
+        {currentPage === 'home' ? (
+          <>
+            <BeforeAfterHero />
 
-        {/* Offers overlap the bottom of the Hero or sit right below */}
-        <div id="offers" className="relative z-20 -mt-16 md:-mt-20 px-4">
-          <Offers onSelectPlan={setSelectedPlan} />
-        </div>
+            {/* Offers overlap the bottom of the Hero or sit right below */}
+            <div id="offers" className="relative z-20 -mt-16 md:-mt-20 px-4">
+              <Offers onSelectPlan={setSelectedPlan} />
+            </div>
 
-        <Booster />
+            <Booster />
+          </>
+        ) : (
+          <About />
+        )}
       </main>
 
-      <Footer />
+      {/* Footer with Navigation Prop */}
+      <Footer onNavigate={handleNavigate} />
 
       {/* Checkout Overlay */}
       {selectedPlan && (
