@@ -10,6 +10,7 @@ export interface Offer {
   gradient: string;
   border: string;
   button: string;
+  hostedButtonId: string;
 }
 
 const offers: Offer[] = [
@@ -22,7 +23,8 @@ const offers: Offer[] = [
     // Professional Muted Green (Sage/Moss)
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
-    button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]'
+    button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]',
+    hostedButtonId: 'ZQQKJSDB3EXGU'
   },
   {
     title: "Dual Vision",
@@ -33,7 +35,8 @@ const offers: Offer[] = [
     // Darker Professional Green (Deep Forest/Hunter)
     gradient: 'bg-gradient-to-br from-[#1A3C28] via-[#244F35] to-[#2E6142] text-white',
     border: 'border-[#3D6B4F]',
-    button: 'bg-[#C5A065] text-white hover:bg-[#D6B278]'
+    button: 'bg-[#C5A065] text-white hover:bg-[#D6B278]',
+    hostedButtonId: 'CPZGUWQMXYGQA'
   },
   {
     title: "Signature Design",
@@ -44,7 +47,8 @@ const offers: Offer[] = [
     // Professional Muted Green (Sage/Moss) - Matching the first one
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
-    button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]'
+    button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]',
+    hostedButtonId: 'ZQQKJSDB3EXGU' // Fallback to basic plan ID until specific ID is provided
   },
 ];
 

@@ -9,17 +9,18 @@ interface CheckoutProps {
         features: string[];
         gradient: string;
         border: string;
+        hostedButtonId: string;
     };
     onClose: () => void;
 }
 
 const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
-    const containerId = "paypal-container-ZQQKJSDB3EXGU";
+    const containerId = `paypal-container-${plan.hostedButtonId}`;
 
     React.useEffect(() => {
         // Ensure PayPal script is loaded and available
         const renderPayPalButton = () => {
-            if (window.paypal) {
+            if (window.paypal && plan.hostedButtonId) {
                 try {
                     // Start fresh if needed, though usually render handles it.
                     // The container needs to be empty or handle re-renders gracefully.
@@ -27,7 +28,7 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
                     if (container) container.innerHTML = "";
 
                     window.paypal.HostedButtons({
-                        hostedButtonId: "ZQQKJSDB3EXGU"
+                        hostedButtonId: plan.hostedButtonId
                     })
                         .render(`#${containerId}`);
                 } catch (error) {
@@ -51,7 +52,7 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
             }, 500);
             return () => clearInterval(checkInterval);
         }
-    }, []);
+    }, [plan.hostedButtonId, containerId]);
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
