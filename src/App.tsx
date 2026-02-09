@@ -29,17 +29,15 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen font-sans selection:bg-secondary selection:text-white relative">
-      {/* Global Fixed Background (only for Home) */}
-      {currentPage === 'home' && (
-        <div
-          className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${luxuryGardenBg})`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-      )}
+      {/* Global Fixed Background (Visible on all pages) */}
+      <div
+        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${luxuryGardenBg})`,
+        }}
+      >
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
 
       {/* Header with Navigation Prop */}
       <Header onNavigate={handleNavigate} />

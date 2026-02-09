@@ -20,7 +20,7 @@ const About: React.FC = () => {
 
             {/* Content Section */}
             <section className="flex-grow py-20 px-6">
-                <div className="max-w-3xl mx-auto space-y-8 text-lg text-gray-700 leading-relaxed">
+                <div className="max-w-3xl mx-auto space-y-8 text-lg text-gray-700 leading-relaxed bg-white/95 p-8 md:p-12 rounded-xl shadow-lg backdrop-blur-sm">
                     <p>
                         We didn’t plan on getting into garden design — it kind of found us.
                     </p>

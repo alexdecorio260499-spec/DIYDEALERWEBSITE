@@ -47,12 +47,21 @@ const Booster: React.FC = () => {
           </ul>
 
           <div className="relative z-10">
-            <button className="w-full sm:w-auto px-6 py-3 bg-white text-[#1a2e1a] rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-all active:scale-95 flex items-center justify-center gap-2">
+            <a
+              href="#offers"
+              onClick={(e) => {
+                e.preventDefault();
+                // If on homepage, scroll to offers. If not, this might need global navigation handling (context/prop)
+                // Assuming Booster is used on Home, simple querySelector works.
+                document.querySelector('#offers')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full sm:w-auto px-6 py-3 bg-white text-[#1a2e1a] rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-all active:scale-95 flex items-center justify-center gap-2 inline-flex"
+            >
               Start My Design
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </a>
             <p className="text-white/40 text-xs font-medium mt-3 ml-2">Join 500+ happy garden owners.</p>
           </div>
         </div>
