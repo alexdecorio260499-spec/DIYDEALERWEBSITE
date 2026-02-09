@@ -69,6 +69,27 @@ const App: React.FC = () => {
           </svg>
         </button>
       </div>
+
+      {/* Scroll Down Indicator - Desktop (Bottom Right) */}
+      {!scrolled && (
+        <button
+          onClick={() => {
+            const offersSection = document.getElementById('offers');
+            if (offersSection) offersSection.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="hidden md:flex fixed bottom-8 right-8 z-40 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white/20 transition-all animate-bounce shadow-lg group"
+          aria-label="Scroll down"
+        >
+          <svg
+            className="w-6 h-6 group-hover:translate-y-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 };
