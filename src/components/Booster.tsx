@@ -48,12 +48,10 @@ const Booster: React.FC = () => {
 
           <div className="relative z-10">
             <a
-              href="#offers"
+              href="#"
               onClick={(e) => {
                 e.preventDefault();
-                // If on homepage, scroll to offers. If not, this might need global navigation handling (context/prop)
-                // Assuming Booster is used on Home, simple querySelector works.
-                document.querySelector('#offers')?.scrollIntoView({ behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="w-full sm:w-auto px-6 py-3 bg-white text-[#1a2e1a] rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-all active:scale-95 flex items-center justify-center gap-2 inline-flex"
             >
