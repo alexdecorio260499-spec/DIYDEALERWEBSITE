@@ -7,22 +7,20 @@ const BeforeAfterHero: React.FC = () => {
         >
             {/* Background Image moved to global App.tsx for fixed effect */}
 
-            {/* Text Overlay */}
-            <div id="visible-offers" className="absolute inset-0 z-10 flex items-start justify-center pt-20 md:pt-24 scroll-mt-24">
-                <div className="text-center px-4 max-w-6xl">
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#d4e157] drop-shadow-lg mb-6 leading-tight">
-                        See it, love it, build it
-                    </h1>
+            {/* Text Overlay - Relative to ensure container grows with content */}
+            <div id="visible-offers" className="relative z-10 flex flex-col items-center justify-start pt-20 md:pt-24 pb-20 px-4 text-center max-w-6xl mx-auto scroll-mt-24">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#d4e157] drop-shadow-lg mb-6 leading-tight">
+                    See it, love it, build it
+                </h1>
 
-                    <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 drop-shadow-md font-light">
-                        Stop guessing. Visualise your Outdoor space with realistic Staging and professional landscaping before investing thousands in the wrong setup.
-                    </p>
+                <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 drop-shadow-md font-light">
+                    Stop guessing. Visualise your Outdoor space with realistic Staging and professional landscaping before investing thousands in the wrong setup.
+                </p>
 
-                    <p className="text-xl md:text-2xl text-white/95 font-bold tracking-wide uppercase drop-shadow-md">
-                        Save time, save money, enjoy the process
-                    </p>
-                    <div className="hidden" />
-                </div>
+                <p className="text-xl md:text-2xl text-white/95 font-bold tracking-wide uppercase drop-shadow-md mb-8">
+                    Save time, save money, enjoy the process
+                </p>
+                <div className="hidden" />
             </div>
         </section>
     );
