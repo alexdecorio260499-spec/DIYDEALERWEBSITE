@@ -30,11 +30,11 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className="pt-24 min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col pt-20 md:pt-24">
             {/* Hero Section */}
-            <section className="bg-[#1a2e1a] text-white py-16 px-6">
+            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-8">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-3xl md:text-5xl font-serif mb-4">Contact Us</h1>
+                    <h1 className="text-3xl md:text-5xl font-serif mb-1">Contact Us</h1>
                     <p className="text-lg text-white/80 max-w-2xl mx-auto">
                         Ready to transform your garden? Get in touch.
                     </p>
