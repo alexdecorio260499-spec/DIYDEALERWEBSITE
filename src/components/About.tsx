@@ -9,9 +9,9 @@ const About: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col pt-20 md:pt-24">
             {/* Hero Section */}
-            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-8">
+            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-2">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-3xl md:text-5xl font-serif mb-1">Our Story</h1>
+                    <h1 className="text-3xl md:text-5xl font-serif mb-4">Our Story</h1>
                     <p className="text-lg text-white/80 max-w-2xl mx-auto">
                         From DIY enthusiasts to garden design professionals.
                     </p>
@@ -19,7 +19,7 @@ const About: React.FC = () => {
             </section>
 
             {/* Content Section */}
-            <section className="flex-grow py-20 px-6">
+            <section className="flex-grow py-8 px-6">
                 <div className="max-w-3xl mx-auto space-y-8 text-lg text-gray-700 leading-relaxed bg-white/95 p-8 md:p-12 rounded-xl shadow-lg backdrop-blur-sm">
                     <p>
                         We didn’t plan on getting into garden design — it kind of found us.

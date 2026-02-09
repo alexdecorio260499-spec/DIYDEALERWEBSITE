@@ -12,12 +12,14 @@ const Booster: React.FC = () => {
     {
       text: "Habitat Landscapes completely transformed our overgrown backyard into a stunning modern retreat. The 3D visualization helped us see exactly what we were getting.",
       author: "Sarah Jenkins",
-      location: "Surrey, UK"
+      location: "Surrey, UK",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
     },
     {
       text: "I was hesitant about a purely online service, but the designs were spot on. It saved us thousands in potential landscaping mistakes.",
       author: "Mark Thompson",
-      location: "London, UK"
+      location: "London, UK",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
     }
   ];
 
@@ -85,10 +87,12 @@ const Booster: React.FC = () => {
                 <p className="text-gray-600 mb-4 italic text-sm leading-relaxed">
                   "{t.text}"
                 </p>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-500">
-                    {t.author.charAt(0)}
-                  </div>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={t.image}
+                    alt={t.author}
+                    className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                  />
                   <div>
                     <strong className="block text-primary text-xs font-bold">{t.author}</strong>
                     <span className="text-[10px] text-gray-400 uppercase tracking-wide">{t.location}</span>

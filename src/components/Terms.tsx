@@ -8,17 +8,17 @@ const Terms: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col pt-20 md:pt-24">
             {/* Hero Section */}
-            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-8">
+            <section className="bg-[#1a2e1a] text-white py-[3px] px-6 mb-2">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-3xl md:text-5xl font-serif mb-1">Terms & Conditions</h1>
-                    <p className="text-lg text-white/80 max-w-2xl mx-auto">
+                    <h1 className="text-2xl md:text-4xl font-serif mb-2">Terms & Conditions</h1>
+                    <p className="text-base text-white/80 max-w-2xl mx-auto">
                         Last updated: 09/02/2026
                     </p>
                 </div>
             </section>
 
             {/* Content Section */}
-            <section className="flex-grow py-20 px-6">
+            <section className="flex-grow py-8 px-6">
                 <div className="max-w-3xl mx-auto space-y-8 text-lg text-gray-700 leading-relaxed bg-white/95 p-8 md:p-12 rounded-xl shadow-lg backdrop-blur-sm">
                     <p className="font-bold">
                         By using this website, you agree to the following Terms & Conditions. If you do not agree, please do not use the site.
