@@ -30,9 +30,10 @@ const Header: React.FC = () => {
   // Replacing old links with the site's actual links but structure of new header
   const links = [
     { name: 'Our Services', href: '#visible-offers' },
-    { name: 'Our Creations', href: '#testimonials' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'About Us', href: '#' },
   ];
+
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${sticky ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
