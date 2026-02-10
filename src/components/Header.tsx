@@ -108,8 +108,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-[#1a2e1a] z-[70] flex items-center justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-          <nav className="flex flex-col items-center gap-8">
+        <div className={`fixed inset-0 bg-[#1a2e1a] z-[70] flex items-start justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+          <nav className="flex flex-col items-center gap-8 pt-24">
             {links.map((link) => (
               <a
                 key={link.name}
