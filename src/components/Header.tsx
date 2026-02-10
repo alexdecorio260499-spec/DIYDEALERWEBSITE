@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
 
         {/* Mobile Hamburger Icon */}
         <button
-          className="md:hidden text-white z-[80] relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 bg-[#1a2e1a] rounded-md"
+          className="md:hidden text-white z-[80] relative w-8 h-8 flex flex-col justify-center gap-1.5"
           onClick={toggleMobileMenu}
           aria-label="Toggle Menu"
         >
@@ -108,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-[#1a2e1a] z-[70] flex items-start justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+        <div className={`fixed inset-0 z-[70] flex items-start justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`} style={{ backgroundColor: '#1a2e1a' }}>
           <nav className="flex flex-col items-center gap-8 pt-24">
             {links.map((link) => (
               <a
