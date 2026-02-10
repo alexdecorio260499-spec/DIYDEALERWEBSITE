@@ -43,7 +43,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Header with Navigation Prop */}
-      <Header onNavigate={handleNavigate} />
+      <Header onNavigate={handleNavigate} onCheckoutClose={() => setSelectedPlan(null)} />
 
       <main>
         {currentPage === 'home' && (

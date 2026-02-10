@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 
 interface HeaderProps {
   onNavigate?: (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact') => void;
+  onCheckoutClose?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
   const [sticky, setSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,6 +37,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     closeMobileMenu();
+    onCheckoutClose?.(); // Close checkout modal if open
 
     if (href === '#about') {
       onNavigate?.('about');
@@ -62,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-[60] transition-all duration-300 ${sticky ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
+    <header className="fixed top-0 w-full z-[60] transition-all duration-300 bg-black/20 backdrop-blur-xl border-b border-white/10 py-4">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <a
@@ -96,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
         {/* Mobile Hamburger Icon */}
         <button
-          className="md:hidden text-white z-50 relative w-8 h-8 flex flex-col justify-center gap-1.5"
+          className="md:hidden text-white z-[80] relative w-8 h-8 flex flex-col justify-center gap-1.5"
           onClick={toggleMobileMenu}
           aria-label="Toggle Menu"
         >
@@ -106,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-[#5cb25d] z-40 flex items-center justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-[#1a2e1a] z-[70] flex items-center justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
           <nav className="flex flex-col items-center gap-8">
             {links.map((link) => (
               <a
