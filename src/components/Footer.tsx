@@ -45,9 +45,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Services</h5>
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
-              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#1a2e1a] transition-colors">Quick Vision</a></li>
-              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#1a2e1a] transition-colors">Dual Vision</a></li>
-              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#1a2e1a] transition-colors">Signature Design</a></li>
+              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#5cb25d] transition-colors">Quick Vision</a></li>
+              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#5cb25d] transition-colors">Dual Vision</a></li>
+              <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#5cb25d] transition-colors">Signature Design</a></li>
             </ul>
           </div>
 
@@ -55,10 +55,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Company</h5>
             <ul className="space-y-2 text-gray-500 text-sm font-medium">
-              <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-[#1a2e1a] transition-colors">About Us</a></li>
+              <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-[#5cb25d] transition-colors">About Us</a></li>
 
-              <li><a href="#terms" onClick={(e) => handleLinkClick(e, '#terms')} className="hover:text-[#1a2e1a] transition-colors">Terms & Conditions</a></li>
-              <li><a href="#privacy" onClick={(e) => handleLinkClick(e, '#privacy')} className="hover:text-[#1a2e1a] transition-colors">Privacy Policy</a></li>
+              <li><a href="#terms" onClick={(e) => handleLinkClick(e, '#terms')} className="hover:text-[#5cb25d] transition-colors">Terms & Conditions</a></li>
+              <li><a href="#privacy" onClick={(e) => handleLinkClick(e, '#privacy')} className="hover:text-[#5cb25d] transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
         </div>

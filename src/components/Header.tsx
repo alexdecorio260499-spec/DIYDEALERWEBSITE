@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="text-white text-sm font-medium tracking-wide hover:text-[#1a2e1a] transition-colors uppercase"
+              className="text-white text-sm font-medium tracking-wide hover:text-[#5cb25d] transition-colors uppercase"
             >
               {link.name}
             </a>
@@ -105,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-white text-2xl font-serif font-light tracking-wider hover:text-[#1a2e1a] transition-colors"
+                className="text-white text-2xl font-serif font-light tracking-wider hover:text-[#5cb25d] transition-colors"
               >
                 {link.name}
               </a>
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="text-white text-2xl font-serif font-light tracking-wider hover:text-[#1a2e1a] transition-colors"
+              className="text-white text-2xl font-serif font-light tracking-wider hover:text-[#5cb25d] transition-colors"
             >
               Contact Us
             </a>
