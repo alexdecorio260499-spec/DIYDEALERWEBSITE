@@ -98,7 +98,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
 
         {/* Mobile Hamburger Icon */}
         <button
-          className="md:hidden text-white z-[80] relative w-8 h-8 flex flex-col justify-center gap-1.5"
+          className="md:hidden text-white z-[80] relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-md"
+          style={{ backgroundColor: '#1a2e1a' }}
           onClick={toggleMobileMenu}
           aria-label="Toggle Menu"
         >
