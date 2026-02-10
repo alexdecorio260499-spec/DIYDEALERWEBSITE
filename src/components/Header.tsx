@@ -21,6 +21,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileMenuOpen]);
+
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
@@ -54,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${sticky ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
+    <header className={`fixed top-0 w-full z-[60] transition-all duration-300 ${sticky ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <a
@@ -98,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-black/95 backdrop-blur-2xl z-40 flex items-center justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-[#5cb25d] z-40 flex items-center justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
           <nav className="flex flex-col items-center gap-8">
             {links.map((link) => (
               <a
