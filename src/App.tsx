@@ -25,7 +25,11 @@ const App: React.FC = () => {
     const paymentStatus = urlParams.get('payment');
     const planType = urlParams.get('plan');
 
+    console.log('🔍 Checking URL parameters:', { paymentStatus, planType, fullURL: window.location.href });
+
     if (paymentStatus === 'success' && planType) {
+      console.log('✅ Payment success detected! Plan type:', planType);
+
       // Map plan type to offer details
       const planMapping: Record<string, Offer> = {
         'quick-vision': {
@@ -90,11 +94,17 @@ const App: React.FC = () => {
 
       const selectedPlan = planMapping[planType];
       if (selectedPlan) {
+        console.log('📋 Setting form plan:', selectedPlan.title);
         setFormPlan(selectedPlan);
         setCurrentPage('mandatory-info');
+        console.log('🎯 Page set to mandatory-info');
         // Clean up URL parameters
         window.history.replaceState({}, '', window.location.pathname);
+      } else {
+        console.log('❌ Plan type not found in mapping:', planType);
       }
+    } else {
+      console.log('ℹ️ No payment redirect detected');
     }
   }, []);
 
