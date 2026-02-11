@@ -19,6 +19,85 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info'>('home');
   const [formPlan, setFormPlan] = useState<Offer | null>(null);
 
+  // Detect URL parameters for PayPal redirect
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get('payment');
+    const planType = urlParams.get('plan');
+
+    if (paymentStatus === 'success' && planType) {
+      // Map plan type to offer details
+      const planMapping: Record<string, Offer> = {
+        'quick-vision': {
+          title: 'Quick Vision',
+          price: '€39',
+          originalPrice: '€50',
+          description: 'Perfect for visualizing ideas',
+          popular: false,
+          gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
+          border: 'border-[#5cb25d]/30',
+          button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
+          hostedButtonId: 'RE5EAZ5UMHTRN',
+          features: [
+            'Professional documents',
+            '1 design concept',
+            '2D floor plan',
+            'Plant suggestions',
+            '48-hour delivery'
+          ]
+        },
+        'dual-vision': {
+          title: 'Dual Vision',
+          price: '€59',
+          originalPrice: '€80',
+          description: 'Compare multiple design approaches',
+          popular: true,
+          gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
+          border: 'border-[#5cb25d]/30',
+          button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
+          hostedButtonId: 'XXXXXXXXX',
+          features: [
+            'Professional documents',
+            '2 design concepts',
+            '2D floor plan',
+            'Detailed plant list',
+            'Material recommendations',
+            '72-hour delivery'
+          ]
+        },
+        'signature-design': {
+          title: 'Signature Design',
+          price: 'From €299',
+          originalPrice: '€399',
+          description: 'Premium design with full support',
+          popular: false,
+          gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
+          border: 'border-[#5cb25d]/30',
+          button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
+          hostedButtonId: 'XXXXXXXXX',
+          features: [
+            'Professional documents',
+            '3+ design concepts',
+            '3D visualization',
+            'Complete plant & material list',
+            'Lighting plan',
+            'Budget breakdown',
+            'Priority support',
+            '5-day delivery'
+          ]
+        }
+      };
+
+      const selectedPlan = planMapping[planType];
+      if (selectedPlan) {
+        setFormPlan(selectedPlan);
+        setCurrentPage('mandatory-info');
+        // Clean up URL parameters
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
