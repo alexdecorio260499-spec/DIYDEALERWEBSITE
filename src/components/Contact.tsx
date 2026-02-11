@@ -25,6 +25,10 @@ const Contact: React.FC = () => {
         setErrorMessage('');
 
         try {
+            if (!supabase) {
+                throw new Error('Database connection not configured');
+            }
+
             const { error } = await supabase
                 .from('contact_submissions')
                 .insert([

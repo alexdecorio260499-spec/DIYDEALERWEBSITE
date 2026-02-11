@@ -87,6 +87,10 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
         setSubmitError('');
 
         try {
+            if (!supabase) {
+                throw new Error('Database connection not configured');
+            }
+
             // Upload pictures to Supabase Storage
             const pictureUrls: string[] = [];
 
