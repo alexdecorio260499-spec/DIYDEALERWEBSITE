@@ -127,7 +127,7 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose, onShowInfoForm }) =>
                     </div>
 
                     <p className="mt-6 text-sm text-white/80 font-medium leading-relaxed italic text-center border-t border-white/20 pt-6">
-                        "Once your payment is complete, your tailored onboarding begins and we’ll immediately start working on your designs."
+                        Once your payment is complete, your tailored onboarding begins and we’ll immediately start working on your designs.
                     </p>
                 </div>
 
