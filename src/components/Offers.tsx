@@ -4,9 +4,11 @@ import React, { useState } from 'react';
 export interface Offer {
   title: string;
   price: string;
+  originalPrice?: string;
   description: string;
   features: string[];
   popular: boolean;
+  discount?: string;
   gradient: string;
   border: string;
   button: string;
@@ -16,9 +18,11 @@ export interface Offer {
 const offers: Offer[] = [
   {
     title: "Quick Vision",
-    price: "€69",
+    price: "€39",
+    originalPrice: "€50",
     description: 'Perfect for visualizing ideas',
     features: [
+      'Professional documents',
       '1 Styling Option',
       '1 Angle',
       '1 Transformation Video',
@@ -26,6 +30,7 @@ const offers: Offer[] = [
       'Full Conception Roadmap & Good Practice'
     ],
     popular: false,
+    discount: "25% off",
     // Professional Muted Green (Sage/Moss)
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
@@ -34,9 +39,11 @@ const offers: Offer[] = [
   },
   {
     title: "Dual Vision",
-    price: "€99",
+    price: "€59",
+    originalPrice: "€80",
     description: "Explore different aesthetics",
     features: [
+      "Professional documents",
       "3 Styling Options",
       "1 Angle",
       "1 Transformation Video",
@@ -44,6 +51,7 @@ const offers: Offer[] = [
       "Full Conception Roadmap & Good Practice"
     ],
     popular: true,
+    discount: "25% off",
     // Darker Professional Green (Deep Forest/Hunter)
     gradient: 'bg-gradient-to-br from-[#1A3C28] via-[#244F35] to-[#2E6142] text-white',
     border: 'border-[#3D6B4F]',
@@ -52,7 +60,8 @@ const offers: Offer[] = [
   },
   {
     title: "Signature Design",
-    price: "From €399",
+    price: "From €299",
+    originalPrice: "€399",
     description: "Complete construction ready",
     features: [
       "Everything from previous offer",
@@ -60,6 +69,7 @@ const offers: Offer[] = [
       "Technical Drawings Ready for Contractors"
     ],
     popular: false,
+    discount: "25% off",
     // Professional Muted Green (Sage/Moss) - Matching the first one
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
@@ -95,11 +105,22 @@ const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
               </div>
             )}
 
+            {offer.discount && (
+              <div className="absolute -top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold tracking-wide shadow-md">
+                {offer.discount}
+              </div>
+            )}
+
             <h3 className="font-serif text-2xl mb-2 font-bold opacity-90">
               {offer.title}
             </h3>
 
-            <div className="flex items-baseline gap-1 mb-3">
+            <div className="flex items-baseline gap-2 mb-3">
+              {offer.originalPrice && (
+                <span className="text-xl font-bold line-through opacity-50">
+                  {offer.originalPrice}
+                </span>
+              )}
               <span className="text-4xl font-extrabold tracking-tight">
                 {offer.price}
               </span>

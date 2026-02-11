@@ -35,6 +35,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
   };
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Allow default behavior for new tab/window (Cmd+Click, Ctrl+Click, middle-click)
+    if (e.metaKey || e.ctrlKey || e.button === 1) {
+      return;
+    }
     e.preventDefault();
     closeMobileMenu();
     onCheckoutClose?.(); // Close checkout modal if open
@@ -64,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-[60] transition-all duration-300 bg-black/20 backdrop-blur-xl border-b border-white/10 py-4">
+    <header className="fixed top-0 w-full z-[80] transition-all duration-300 bg-black/20 backdrop-blur-xl border-b border-white/10 py-4">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <a
@@ -99,7 +103,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
         {/* Mobile Hamburger Icon */}
         <button
           className="md:hidden text-white z-[80] relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-md"
-          style={{ backgroundColor: '#1a2e1a' }}
           onClick={toggleMobileMenu}
           aria-label="Toggle Menu"
         >
@@ -109,8 +112,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onCheckoutClose }) => {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 z-[70] flex items-start justify-center transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`} style={{ backgroundColor: '#1a2e1a' }}>
-          <nav className="flex flex-col items-center gap-8 pt-24">
+        <div
+          className={`fixed top-[72px] left-0 right-0 z-[70] transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+          style={{ backgroundColor: '#1a2e1a', height: 'calc(100vh - 72px)' }}
+        >
+          <nav className="flex flex-col items-center gap-8 pt-24 w-full">
             {links.map((link) => (
               <a
                 key={link.name}

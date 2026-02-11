@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabase';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ const Contact: React.FC = () => {
         message: ''
     });
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -17,16 +19,31 @@ const Contact: React.FC = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('submitting');
+        setErrorMessage('');
 
-        // Simulate sending
-        setTimeout(() => {
-            console.log('Form submitted:', formData);
+        try {
+            const { error } = await supabase
+                .from('contact_submissions')
+                .insert([
+                    {
+                        name: formData.name,
+                        email: formData.email,
+                        message: formData.message
+                    }
+                ]);
+
+            if (error) throw error;
+
             setStatus('success');
             setFormData({ name: '', email: '', message: '' });
-        }, 1000);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('error');
+            setErrorMessage('Failed to send message. Please try again or email us directly at yourdiydealer@gmail.com');
+        }
     };
 
     return (
@@ -60,6 +77,24 @@ const Contact: React.FC = () => {
                                 className="mt-6 text-[#1a2e1a] font-bold hover:underline"
                             >
                                 Send another message
+                            </button>
+                        </div>
+                    ) : status === 'error' ? (
+                        <div className="text-center py-10">
+                            <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-red-600 mb-2">Error Sending Message</h3>
+                            <p className="text-gray-600 mb-4">
+                                {errorMessage}
+                            </p>
+                            <button
+                                onClick={() => setStatus('idle')}
+                                className="mt-6 bg-[#1a2e1a] text-white font-bold px-6 py-3 rounded-lg hover:bg-[#2a4a2a] transition-all"
+                            >
+                                Try Again
                             </button>
                         </div>
                     ) : (

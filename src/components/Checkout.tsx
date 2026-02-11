@@ -12,9 +12,10 @@ interface CheckoutProps {
         hostedButtonId: string;
     };
     onClose: () => void;
+    onShowInfoForm?: () => void;
 }
 
-const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
+const Checkout: React.FC<CheckoutProps> = ({ plan, onClose, onShowInfoForm }) => {
     const containerId = `paypal-container-${plan.hostedButtonId}`;
 
     React.useEffect(() => {
@@ -55,7 +56,7 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
     }, [plan.hostedButtonId, containerId]);
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 pt-20 overflow-y-auto">
             {/* Backdrop */}
             <div
                 className="absolute inset-0 bg-black/80 backdrop-blur-sm"
@@ -63,7 +64,7 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
             />
 
             {/* Modal Card */}
-            <div className="relative w-full max-w-4xl bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+            <div className="relative w-full max-w-4xl bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row mt-20 md:mt-0">
 
                 {/* Close Button */}
                 <button
@@ -86,7 +87,16 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
                     <h2 className="text-3xl font-serif mb-2 font-bold opacity-90">Order Summary</h2>
                     <p className="opacity-80 mb-8 border-b border-white/20 pb-4">You are one step away from your dream garden.</p>
 
-                    <div className={`rounded-2xl p-6 border-2 ${plan.border} bg-white/10 backdrop-blur-md shadow-inner`}>
+                    <div className={`relative rounded-2xl p-6 border-2 ${plan.border} bg-white/10 backdrop-blur-md shadow-inner`}>
+                        {/* Discount Badge - Top Right */}
+                        {plan.discount && (
+                            <div className="absolute -top-3 -right-3">
+                                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                                    {plan.discount}
+                                </span>
+                            </div>
+                        )}
+
                         <h3 className="text-2xl font-bold mb-1 opacity-100">{plan.title}</h3>
                         <p className="text-sm opacity-80 mb-4">{plan.description}</p>
 
@@ -124,6 +134,20 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose }) => {
                             Click the button above to proceed with your payment securely.
                         </p>
                     </div>
+
+                    {/* Test Button - Simulate successful payment */}
+                    <button
+                        onClick={() => {
+                            if (onShowInfoForm) {
+                                onShowInfoForm();
+                            } else {
+                                onClose();
+                            }
+                        }}
+                        className="mt-4 text-white/60 text-sm hover:text-white/80 transition-colors underline"
+                    >
+                        Skip to form (test mode)
+                    </button>
 
                     <div className="mt-8 flex items-center gap-2 text-[#4CAF50] bg-[#4CAF50]/10 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -33,11 +33,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <span className="text-xl font-bold tracking-tight text-[#1a2e1a] block mb-1">
               DIY DEALER DESIGNS
             </span>
-            <p className="text-gray-500 text-sm mb-8 leading-relaxed">
-              Professional garden designs & staging.
+            <p className="text-gray-500 text-sm mb-2 leading-relaxed">
+              Professional garden designs & staging
+            </p>
+            <p className="text-gray-500 text-xs mb-2">
+              yourdiydealer@gmail.com | +44 (0)7944081823
             </p>
             <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">
-              © 2025 DIY DEALER. All rights reserved.
+              © 2026 DIY DEALER | All rights reserved
             </p>
           </div>
 

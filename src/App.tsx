@@ -5,6 +5,7 @@ import Offers, { Offer } from './components/Offers';
 import Booster from './components/Booster';
 import Footer from './components/Footer';
 import Checkout from './components/Checkout';
+import MandatoryInfoForm from './components/MandatoryInfoForm';
 import luxuryGardenBg from './assets/luxury-garden-after.jpg';
 
 import About from './components/About';
@@ -15,7 +16,8 @@ import Contact from './components/Contact';
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Offer | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info'>('home');
+  const [formPlan, setFormPlan] = useState<Offer | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +27,15 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact') => {
+  const handleNavigate = (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info') => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
+  };
+
+  const handleShowInfoForm = (plan: Offer) => {
+    setFormPlan(plan);
+    setCurrentPage('mandatory-info');
+    setSelectedPlan(null); // Close checkout
   };
 
   return (
@@ -51,7 +59,7 @@ const App: React.FC = () => {
             <BeforeAfterHero />
 
             {/* Offers overlap the bottom of the Hero or sit right below */}
-            <div id="offers" className="relative z-20 -mt-16 md:-mt-20 px-4">
+            <div id="offers" className="relative z-20 -mt-20 md:-mt-24 px-4">
               <Offers onSelectPlan={setSelectedPlan} />
             </div>
 
@@ -62,6 +70,13 @@ const App: React.FC = () => {
         {currentPage === 'terms' && <Terms />}
         {currentPage === 'privacy' && <Privacy />}
         {currentPage === 'contact' && <Contact />}
+        {currentPage === 'mandatory-info' && formPlan && (
+          <MandatoryInfoForm
+            planTitle={formPlan.title}
+            planPrice={formPlan.price}
+            onClose={() => handleNavigate('home')}
+          />
+        )}
       </main>
 
       {/* Footer with Navigation Prop */}
@@ -72,6 +87,7 @@ const App: React.FC = () => {
         <Checkout
           plan={selectedPlan}
           onClose={() => setSelectedPlan(null)}
+          onShowInfoForm={() => handleShowInfoForm(selectedPlan)}
         />
       )}
 
