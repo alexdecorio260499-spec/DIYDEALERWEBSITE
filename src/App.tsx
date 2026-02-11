@@ -44,7 +44,7 @@ const App: React.FC = () => {
           button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
           hostedButtonId: 'RE5EAZ5UMHTRN',
           features: [
-            'Professional documents',
+            'Professional design Presentation',
             '1 design concept',
             '2D floor plan',
             'Plant suggestions',
@@ -62,7 +62,7 @@ const App: React.FC = () => {
           button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
           hostedButtonId: 'XXXXXXXXX',
           features: [
-            'Professional documents',
+            'Professional design Presentation',
             '2 design concepts',
             '2D floor plan',
             'Detailed plant list',
@@ -81,7 +81,7 @@ const App: React.FC = () => {
           button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
           hostedButtonId: 'XXXXXXXXX',
           features: [
-            'Professional documents',
+            'Professional design Presentation',
             '3+ design concepts',
             '3D visualization',
             'Complete plant & material list',

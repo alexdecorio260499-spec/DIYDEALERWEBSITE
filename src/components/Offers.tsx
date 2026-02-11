@@ -22,7 +22,7 @@ const offers: Offer[] = [
     originalPrice: "€50",
     description: 'Perfect for visualizing ideas',
     features: [
-      'Professional documents',
+      'Professional design Presentation',
       '1 Styling Option',
       '1 Angle',
       '1 Transformation Video',
@@ -43,7 +43,7 @@ const offers: Offer[] = [
     originalPrice: "€80",
     description: "Explore different aesthetics",
     features: [
-      "Professional documents",
+      "Professional design Presentation",
       "3 Styling Options",
       "1 Angle",
       "1 Transformation Video",
