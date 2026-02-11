@@ -5,6 +5,7 @@ interface CheckoutProps {
     plan: {
         title: string;
         price: string;
+        originalPrice?: string;
         description: string;
         features: string[];
         gradient: string;
@@ -100,7 +101,16 @@ const Checkout: React.FC<CheckoutProps> = ({ plan, onClose, onShowInfoForm }) =>
                         <h3 className="text-2xl font-bold mb-1 opacity-100">{plan.title}</h3>
                         <p className="text-sm opacity-80 mb-4">{plan.description}</p>
 
-                        <div className="text-4xl font-extrabold mb-6 tracking-tight">{plan.price}</div>
+                        <div className="flex items-baseline gap-2 mb-6">
+                            {plan.originalPrice && (
+                                <span className="text-xl font-bold line-through opacity-50">
+                                    {plan.originalPrice}
+                                </span>
+                            )}
+                            <span className="text-4xl font-extrabold tracking-tight">
+                                {plan.price}
+                            </span>
+                        </div>
 
                         <ul className="space-y-3">
                             {plan.features.map((feature, index) => (
