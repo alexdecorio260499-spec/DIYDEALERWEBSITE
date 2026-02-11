@@ -5,6 +5,7 @@ interface MandatoryInfoFormProps {
     planTitle: string;
     planPrice: string;
     onClose: () => void;
+    onSuccess: () => void;
 }
 
 interface FormData {
@@ -15,7 +16,7 @@ interface FormData {
     pictures: File[];
 }
 
-const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPrice, onClose }) => {
+const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPrice, onClose, onSuccess }) => {
     const [formData, setFormData] = useState<FormData>({
         full_name: '',
         email: '',
@@ -152,9 +153,8 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
             }
 
             console.log('Database insert successful!');
-            // Success!
-            alert('Thank you! Your information has been submitted successfully. We will contact you soon to start your garden transformation!');
-            onClose();
+            // Success! Navigate to success page
+            onSuccess();
         } catch (error) {
             console.error('Error submitting form:', error);
             setSubmitError('Failed to submit your information. Please try again or contact us directly at yourdiydealer@gmail.com');

@@ -12,11 +12,12 @@ import About from './components/About';
 import Terms from './components/Terms';
 import Privacy from './components/Privacy';
 import Contact from './components/Contact';
+import SuccessConfirmation from './components/SuccessConfirmation';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Offer | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info' | 'success'>('home');
   const [formPlan, setFormPlan] = useState<Offer | null>(null);
 
   // Detect URL parameters for PayPal redirect
@@ -116,7 +117,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info') => {
+  const handleNavigate = (page: 'home' | 'about' | 'terms' | 'privacy' | 'contact' | 'mandatory-info' | 'success') => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
@@ -159,11 +160,13 @@ const App: React.FC = () => {
         {currentPage === 'terms' && <Terms />}
         {currentPage === 'privacy' && <Privacy />}
         {currentPage === 'contact' && <Contact />}
+        {currentPage === 'success' && <SuccessConfirmation onNavigate={handleNavigate} />}
         {currentPage === 'mandatory-info' && formPlan && (
           <MandatoryInfoForm
             planTitle={formPlan.title}
             planPrice={formPlan.price}
             onClose={() => handleNavigate('home')}
+            onSuccess={() => handleNavigate('success')}
           />
         )}
       </main>
