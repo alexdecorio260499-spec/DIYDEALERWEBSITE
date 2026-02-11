@@ -38,7 +38,7 @@ const offers: Offer[] = [
     hostedButtonId: 'ZQQKJSDB3EXGU'
   },
   {
-    title: "Dual Vision",
+    title: "Signature Trio",
     price: "€59",
     originalPrice: "€80",
     description: "Explore different aesthetics",

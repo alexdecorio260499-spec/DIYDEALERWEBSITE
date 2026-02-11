@@ -52,7 +52,7 @@ const App: React.FC = () => {
           ]
         },
         'dual-vision': {
-          title: 'Dual Vision',
+          title: 'Signature Trio',
           price: '€59',
           originalPrice: '€80',
           description: 'Compare multiple design approaches',
