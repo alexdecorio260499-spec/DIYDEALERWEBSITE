@@ -17,7 +17,7 @@ const BeforeAfterHero: React.FC = () => {
                     Stop guessing. Visualise your Outdoor space with realistic Staging and professional landscaping before investing thousands in the wrong setup.
                 </p>
 
-                <p className="text-xl md:text-2xl text-white/95 font-bold tracking-wide uppercase drop-shadow-md mb-8">
+                <p className="text-xl md:text-2xl text-white/95 font-bold tracking-wide uppercase drop-shadow-md mb-[37px]">
                     Save time, save money, enjoy the process
                 </p>
                 <div className="hidden" />
