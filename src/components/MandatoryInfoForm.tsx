@@ -188,10 +188,16 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
                 <div className="bg-gradient-to-br from-[#1A3C28] via-[#244F35] to-[#2E6142] pt-16 pb-8 px-8 text-white text-center relative">
                     {/* Green Checkmark Circle */}
                     <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
-                        <div className="w-24 h-24 bg-gradient-to-br from-[#4ade80] to-[#22c55e] rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
-                            <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
+                        <div className="relative">
+                            {/* Pulse Effect */}
+                            <div className="absolute inset-0 bg-[#4ade80]/40 rounded-full animate-ping" />
+
+                            {/* Main Circle */}
+                            <div className="relative w-24 h-24 bg-gradient-to-br from-[#4ade80] to-[#22c55e] rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
+                                <svg className="w-12 h-12 text-white animate-[scale-in_0.5s_ease-out]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
 
@@ -326,6 +332,21 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
 
                 </form>
             </div>
+            <style>{`
+                @keyframes scale-in {
+                    0% {
+                        transform: scale(0);
+                        opacity: 0;
+                    }
+                    50% {
+                        transform: scale(1.1);
+                    }
+                    100% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+            `}</style>
         </div>
     );
 };
