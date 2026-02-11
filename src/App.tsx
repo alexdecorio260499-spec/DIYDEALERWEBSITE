@@ -53,8 +53,8 @@ const App: React.FC = () => {
         },
         'dual-vision': {
           title: 'Signature Trio',
-          price: '€59',
-          originalPrice: '€80',
+          price: '€69',
+          originalPrice: '€90',
           description: 'Compare multiple design approaches',
           popular: true,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',

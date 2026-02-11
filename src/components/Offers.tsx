@@ -39,8 +39,8 @@ const offers: Offer[] = [
   },
   {
     title: "Signature Trio",
-    price: "€59",
-    originalPrice: "€80",
+    price: "€69",
+    originalPrice: "€90",
     description: "Explore different aesthetics",
     features: [
       "Professional design Presentation",
