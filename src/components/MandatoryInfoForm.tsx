@@ -91,6 +91,7 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
                 throw new Error('Database connection not configured');
             }
 
+            console.log('Starting file upload process...');
             // Upload pictures to Supabase Storage
             const pictureUrls: string[] = [];
 
@@ -99,19 +100,36 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
                 const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
                 const filePath = `${formData.email}/${fileName}`;
 
+                console.log(`Uploading file: ${filePath}`);
                 const { error: uploadError } = await supabase.storage
                     .from('payment-pictures')
                     .upload(filePath, file);
 
-                if (uploadError) throw uploadError;
+                if (uploadError) {
+                    console.error('Upload error:', uploadError);
+                    throw uploadError;
+                }
 
+                console.log(`File uploaded successfully: ${filePath}`);
                 // Get public URL
                 const { data: { publicUrl } } = supabase.storage
                     .from('payment-pictures')
                     .getPublicUrl(filePath);
 
+                console.log(`Public URL: ${publicUrl}`);
                 pictureUrls.push(publicUrl);
             }
+
+            console.log('All files uploaded. Inserting into database...');
+            console.log('Data to insert:', {
+                full_name: formData.full_name,
+                email: formData.email,
+                phone: formData.phone,
+                revamp_styles: formData.revamp_styles,
+                plan_title: planTitle,
+                plan_price: planPrice,
+                pictures_urls: pictureUrls
+            });
 
             // Insert submission data into database
             const { error: dbError } = await supabase
@@ -128,8 +146,12 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
                     }
                 ]);
 
-            if (dbError) throw dbError;
+            if (dbError) {
+                console.error('Database insert error:', dbError);
+                throw dbError;
+            }
 
+            console.log('Database insert successful!');
             // Success!
             alert('Thank you! Your information has been submitted successfully. We will contact you soon to start your garden transformation!');
             onClose();
