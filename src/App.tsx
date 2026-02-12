@@ -34,61 +34,56 @@ const App: React.FC = () => {
       // Map plan type to offer details
       const planMapping: Record<string, Offer> = {
         'quick-vision': {
-          title: 'Quick Vision',
-          price: '€39',
-          originalPrice: '€50',
-          description: 'Perfect for visualizing ideas',
+          title: 'Garden Clarity',
+          price: '€59',
+          // originalPrice: '€50',
+          description: 'See the potential in your space before, have confidence before investing',
           popular: false,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
           border: 'border-[#5cb25d]/30',
           button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
           hostedButtonId: 'RE5EAZ5UMHTRN',
           features: [
-            'Professional design Presentation',
-            '1 design concept',
-            '2D floor plan',
-            'Plant suggestions',
-            '48-hour delivery'
+            'A professional visual concept of your garden',
+            'One clear design direction',
+            'Before & after transformation visuals',
+            'Furnished & unfurnished views',
+            'A simple action roadmap'
           ]
         },
         'dual-vision': {
-          title: 'Signature Trio',
-          price: '€69',
-          originalPrice: '€90',
-          description: 'Compare multiple design approaches',
+          title: 'The Complete Vision',
+          price: '€89',
+          // originalPrice: '€90',
+          description: 'Finally know exactly what your garden should look like. You won’t just “have ideas.” You’ll have direction.',
           popular: true,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
           border: 'border-[#5cb25d]/30',
           button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
-          hostedButtonId: 'XXXXXXXXX',
+          hostedButtonId: 'CPZGUWQMXYGQA',
           features: [
-            'Professional design Presentation',
-            '2 design concepts',
-            '2D floor plan',
-            'Detailed plant list',
-            'Material recommendations',
-            '72-hour delivery'
+            'Three distinct design styles to explore',
+            'Professional presentation visuals',
+            'Transformation video',
+            'Furnished & unfurnished views',
+            'Implementation roadmap'
           ]
         },
         'signature-design': {
           title: 'Signature Design',
-          price: 'From €299',
-          originalPrice: '€399',
-          description: 'Premium design with full support',
+          price: 'On quotation only',
+          // originalPrice: '€399',
+          description: 'A contractor-ready plan. No guesswork. No expensive mistakes. This isn’t inspiration, it’s execution',
           popular: false,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
           border: 'border-[#5cb25d]/30',
           button: 'bg-gradient-to-r from-[#4A5D4E] to-[#5F7A65] hover:from-[#5F7A65] hover:to-[#4A5D4E]',
           hostedButtonId: 'XXXXXXXXX',
           features: [
-            'Professional design Presentation',
-            '3+ design concepts',
-            '3D visualization',
-            'Complete plant & material list',
-            'Lighting plan',
-            'Budget breakdown',
-            'Priority support',
-            '5-day delivery'
+            'Detailed technical drawings',
+            '3 revision rounds',
+            'Build-ready plans for landscapers',
+            'Structured layout with real-world proportions'
           ]
         }
       };
@@ -128,6 +123,15 @@ const App: React.FC = () => {
     setSelectedPlan(null); // Close checkout
   };
 
+  const handleSelectPlan = (plan: Offer) => {
+    if (plan.action === 'contact') {
+      setCurrentPage('contact');
+      window.scrollTo(0, 0);
+    } else {
+      setSelectedPlan(plan);
+    }
+  };
+
   return (
     <div className="min-h-screen font-sans selection:bg-secondary selection:text-white relative">
       {/* Global Fixed Background (Visible on all pages) */}
@@ -150,7 +154,7 @@ const App: React.FC = () => {
 
             {/* Offers overlap the bottom of the Hero or sit right below */}
             <div id="offers" className="relative z-20 -mt-20 md:-mt-24 px-4">
-              <Offers onSelectPlan={setSelectedPlan} />
+              <Offers onSelectPlan={handleSelectPlan} />
             </div>
 
             <Booster />

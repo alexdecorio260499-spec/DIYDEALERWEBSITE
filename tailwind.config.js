@@ -12,7 +12,7 @@ export default {
                     foreground: '#FFFFFF',
                 },
                 secondary: {
-                    DEFAULT: '#A38E6E', // Earthy Gold
+                    DEFAULT: '#857050', // Darker Earthy Gold
                     foreground: '#FFFFFF',
                 },
                 accent: {
@@ -23,8 +23,8 @@ export default {
                 text: '#1E293B',
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-                serif: ['"Playfair Display"', 'serif'],
+                sans: ['Poppins', 'sans-serif'],
+                serif: ['Poppins', 'serif'],
             },
             spacing: {
                 'xs': '4px',

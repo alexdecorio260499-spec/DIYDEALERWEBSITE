@@ -153,6 +153,30 @@ const MandatoryInfoForm: React.FC<MandatoryInfoFormProps> = ({ planTitle, planPr
             }
 
             console.log('Database insert successful!');
+
+            // --- Trigger Confirmation Email (Edge Function) ---
+            try {
+                console.log('Triggering confirmation email...');
+                const { error: funcError } = await supabase.functions.invoke('send-confirmation', {
+                    body: {
+                        full_name: formData.full_name,
+                        email: formData.email,
+                        plan_title: planTitle,
+                        revamp_styles: formData.revamp_styles,
+                        pictures_urls: pictureUrls
+                    }
+                });
+
+                if (funcError) {
+                    console.error('Error invoking send-confirmation function:', funcError);
+                    // We don't block success page if email fails, but we log it.
+                } else {
+                    console.log('Confirmation email request sent!');
+                }
+            } catch (err) {
+                console.error('Unexpected error invoking function:', err);
+            }
+
             // Success! Navigate to success page
             onSuccess();
         } catch (error) {

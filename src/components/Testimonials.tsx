@@ -29,13 +29,13 @@ const Testimonials: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, i) => (
             <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-left">
-              <p className="text-gray-600 mb-6 italic leading-relaxed">
+              <p className="text-gray-800 mb-6 italic leading-relaxed">
                 "{testimonial.text}"
               </p>
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <strong className="block text-primary font-serif">{testimonial.name}</strong>
-                  <span className="text-xs text-gray-400 uppercase tracking-wide">{testimonial.location}</span>
+                  <span className="text-xs text-gray-600 uppercase tracking-wide">{testimonial.location}</span>
                 </div>
                 <div className="flex gap-1 text-secondary">
                   {[...Array(5)].map((_, i) => (

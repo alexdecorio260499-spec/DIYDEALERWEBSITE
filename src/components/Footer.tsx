@@ -33,13 +33,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <span className="text-xl font-bold tracking-tight text-[#1a2e1a] block mb-1">
               DIY DEALER DESIGNS
             </span>
-            <p className="text-gray-500 text-sm mb-2 leading-relaxed">
+            <p className="text-gray-700 text-sm mb-2 leading-relaxed">
               Professional garden designs & staging
             </p>
-            <p className="text-gray-500 text-xs mb-2">
+            <p className="text-gray-700 text-xs mb-2">
               yourdiydealer@gmail.com | +44 (0)7944081823
             </p>
-            <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">
+            <p className="text-gray-600 text-[10px] font-bold uppercase tracking-widest">
               © 2026 DIY DEALER | All rights reserved
             </p>
           </div>
@@ -47,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Links - Services */}
           <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Services</h5>
-            <ul className="space-y-2 text-gray-500 text-sm font-medium">
+            <ul className="space-y-2 text-gray-700 text-sm font-medium">
               <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#5cb25d] transition-colors">Quick Vision</a></li>
               <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#5cb25d] transition-colors">Dual Vision</a></li>
               <li><a href="#visible-offers" onClick={(e) => handleLinkClick(e, '#visible-offers')} className="hover:text-[#5cb25d] transition-colors">Signature Design</a></li>
@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Links - Company */}
           <div className="flex flex-col items-center md:items-start">
             <h5 className="font-bold text-[#1a2e1a] mb-3 uppercase tracking-widest text-xs">Company</h5>
-            <ul className="space-y-2 text-gray-500 text-sm font-medium">
+            <ul className="space-y-2 text-gray-700 text-sm font-medium">
               <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-[#5cb25d] transition-colors">About Us</a></li>
 
               <li><a href="#terms" onClick={(e) => handleLinkClick(e, '#terms')} className="hover:text-[#5cb25d] transition-colors">Terms & Conditions</a></li>

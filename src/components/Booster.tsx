@@ -2,10 +2,9 @@ import React from 'react';
 
 const Booster: React.FC = () => {
   const benefits = [
-    "Avoid buying the wrong furniture",
-    "Visualize before spending thousands",
-    "Faster and more flexible than hiring a designer",
-    "Delivered in 24–48h"
+    "Finally feel proud",
+    "Stop second-guessing",
+    "Visualize before you spend money"
   ];
 
   const testimonials = [
@@ -39,7 +38,7 @@ const Booster: React.FC = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight relative z-10">
-            Why people love this
+            Why homeowners plan before building
           </h2>
           <ul className="space-y-4 relative z-10 mb-6">
             {benefits.map((benefit, idx) => (
@@ -93,7 +92,7 @@ const Booster: React.FC = () => {
                     />
                     <div className="text-left">
                       <strong className="block text-primary text-[12px] font-bold">{t.author}</strong>
-                      <span className="text-[11px] text-gray-400 uppercase tracking-wide">{t.location}</span>
+                      <span className="text-[11px] text-gray-600 uppercase tracking-wide">{t.location}</span>
                     </div>
                   </div>
 
@@ -108,7 +107,7 @@ const Booster: React.FC = () => {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-gray-600 italic text-[14px] leading-snug">
+                <p className="text-gray-800 italic text-[14px] leading-snug">
                   "{t.text}"
                 </p>
               </div>

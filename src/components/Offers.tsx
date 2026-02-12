@@ -13,68 +13,81 @@ export interface Offer {
   border: string;
   button: string;
   hostedButtonId: string;
+  action?: 'checkout' | 'contact';
+  tagline?: string;
+  footerText?: string;
+  buttonLabel?: string;
 }
 
 const offers: Offer[] = [
   {
-    title: "Quick Vision",
-    price: "€39",
-    originalPrice: "€50",
-    description: 'Perfect for visualizing ideas',
+    title: "Garden Clarity",
+    tagline: "See the potential in your space before, have confidence before investing",
+    price: "€59",
+    // originalPrice: "€50", // Removed as per new copy implies single price
+    description: '',
     features: [
-      'Professional design Presentation',
-      '1 Styling Option',
-      '1 Angle',
-      '1 Transformation Video',
-      'Unfurnished & Furnished Images',
-      'Full Conception Roadmap & Good Practice'
+      'A professional visual concept of your garden',
+      'One clear design direction',
+      'Before & after transformation visuals',
+      'Furnished & unfurnished views',
+      'A simple action roadmap so you know what to do next'
     ],
+    // footerText removed
     popular: false,
-    discount: "25% off",
+    // discount: "25% off", // Removed
     // Professional Muted Green (Sage/Moss)
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
     button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]',
-    hostedButtonId: 'ZQQKJSDB3EXGU'
+    hostedButtonId: 'ZQQKJSDB3EXGU',
+    buttonLabel: "Get Garden Clarity"
   },
   {
-    title: "Signature Trio",
-    price: "€69",
-    originalPrice: "€90",
-    description: "Explore different aesthetics",
+    title: "The Complete Vision",
+    tagline: "Finally know exactly what your garden should look like. You won’t just “have ideas.” You’ll have direction.",
+    price: "€89",
+    // originalPrice: "€90",
+    description: "",
     features: [
-      "Professional design Presentation",
-      "3 Styling Options",
-      "1 Angle",
-      "1 Transformation Video",
-      "Unfurnished & Furnished Images",
-      "Full Conception Roadmap & Good Practice"
+      "Three distinct design styles to explore",
+      "Professional presentation visuals",
+      "Transformation video",
+      "Furnished & unfurnished views",
+      "A clear, structured implementation roadmap"
     ],
+    // footerText removed
     popular: true,
-    discount: "25% off",
+    // discount: "25% off",
     // Darker Professional Green (Deep Forest/Hunter)
     gradient: 'bg-gradient-to-br from-[#1A3C28] via-[#244F35] to-[#2E6142] text-white',
     border: 'border-[#3D6B4F]',
     button: 'bg-[#C5A065] text-white hover:bg-[#D6B278]',
-    hostedButtonId: 'CPZGUWQMXYGQA'
+    hostedButtonId: 'CPZGUWQMXYGQA',
+    buttonLabel: "Design My Garden Properly"
   },
   {
     title: "Signature Design",
-    price: "From €299",
-    originalPrice: "€399",
-    description: "Complete construction ready",
+    tagline: "A contractor-ready plan. No guesswork. No expensive mistakes. This isn’t inspiration, it’s execution",
+    price: "On quotation only",
+    description: "",
     features: [
-      "Everything from previous offer",
-      "3 Revisions",
-      "Technical Drawings Ready for Contractors"
+      "Include everything above, plus:",
+      "Detailed technical drawings",
+      "3 revision rounds",
+      "Build-ready plans for landscapers",
+      "Structured layout with real-world proportions"
     ],
+    // footerText removed
     popular: false,
-    discount: "25% off",
+    // discount: "25% off",
     // Professional Muted Green (Sage/Moss) - Matching the first one
     gradient: 'bg-gradient-to-br from-[#4A5D4E] to-[#5F7A65] text-white',
     border: 'border-[#819C88]',
     button: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2C3E30]',
-    hostedButtonId: 'RE5EAZ5UMHTRN'
+    hostedButtonId: 'RE5EAZ5UMHTRN',
+    action: 'contact',
+    buttonLabel: "Get my quote"
   },
 ];
 
@@ -91,71 +104,86 @@ const Offers: React.FC<OffersProps> = ({ onSelectPlan }) => {
         {offers.map((offer, index) => (
           <div
             key={index}
-            onClick={() => setActiveOffer(index)}
+            onClick={() => offer.action !== 'contact' ? onSelectPlan(offer) : null}
             className={`
-              relative p-6 rounded-2xl cursor-pointer transition-all duration-500 border-2 flex flex-col h-full
-              ${offer.gradient}
-              ${offer.border}
-              ${index === 1 ? 'shadow-2xl md:scale-105 z-20' : 'shadow-lg hover:shadow-xl hover:-translate-y-1 scale-100'}
-            `}
+            relative p-8 rounded-2xl border bg-[#2C3E30] flex flex-col cursor-pointer text-white
+            transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:border-opacity-80
+            ${offer.border}
+            ${offer.popular ? 'ring-2 ring-[#C5A065] ring-offset-2 ring-offset-[#1a2e1a]' : ''}
+          `}
           >
             {offer.popular && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FFD700] text-[#1B5E20] px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase shadow-md">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#C5A065] text-[#1a2e1a] px-4 py-1 rounded-full text-sm font-bold shadow-lg animate-fade-in">
                 Most Popular
               </div>
             )}
 
-            {offer.discount && (
-              <div className="absolute -top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold tracking-wide shadow-md">
-                {offer.discount}
-              </div>
-            )}
+            <div className={`
+            absolute inset-0 rounded-2xl opacity-20 pointer-events-none transition-opacity duration-500
+            ${offer.gradient}
+          `} />
 
-            <h3 className="font-serif text-2xl mb-2 font-bold opacity-90">
-              {offer.title}
-            </h3>
+            <div className="relative z-10 flex flex-col h-full">
+              <h3 className="font-serif text-2xl mb-2 font-bold opacity-90">
+                {offer.title}
+              </h3>
 
-            <div className="flex items-baseline gap-2 mb-3">
-              {offer.originalPrice && (
-                <span className="text-xl font-bold line-through opacity-50">
-                  {offer.originalPrice}
-                </span>
+              {offer.tagline && (
+                <p className="text-sm font-medium italic opacity-80 mb-4">
+                  {offer.tagline}
+                </p>
               )}
-              <span className="text-4xl font-extrabold tracking-tight">
-                {offer.price}
-              </span>
-              <span className="text-sm opacity-75 font-medium">/project</span>
-            </div>
 
-            <p className="text-sm opacity-80 mb-4 h-6 font-medium leading-tight">{offer.description}</p>
+              <div className="flex items-baseline gap-2 mb-3">
+                {offer.originalPrice && (
+                  <span className="text-xl font-bold line-through opacity-70">
+                    {offer.originalPrice}
+                  </span>
+                )}
+                <span className="text-4xl font-extrabold tracking-tight">
+                  {offer.price}
+                </span>
+                {!offer.action && <span className="text-sm opacity-90 font-medium ml-1">/ Project</span>}
+              </div>
 
-            <ul className="space-y-2 mb-6">
-              {offer.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-medium opacity-90">
-                  {/* Unified checkmark style for dark background */}
-                  <div className="rounded-full p-0.5 bg-white/20">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  {feature}
-                </li>
-              ))}
-            </ul>
+              {offer.description && (
+                <p className="text-sm opacity-95 mb-4 font-medium leading-tight h-12">{offer.description}</p>
+              )}
 
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onSelectPlan(offer);
-              }}
-              className={`
-              w-full py-3.5 rounded-xl text-sm font-bold tracking-wide transition-all shadow-sm mt-auto
+              <ul className="space-y-2 mb-6 min-h-[140px]">
+                {offer.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm font-medium opacity-100 group-hover:translate-x-1 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms` }}>
+                    {/* Unified checkmark style for dark background */}
+                    <div className="rounded-full p-0.5 bg-white/20 mt-0.5 shrink-0">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {offer.footerText && (
+                <p className="text-xs italic opacity-80 mb-4 font-semibold text-center border-t border-white/20 pt-3">
+                  {offer.footerText}
+                </p>
+              )}
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectPlan(offer);
+                }}
+                className={`
+              w-full py-3.5 rounded-xl text-sm font-bold tracking-wide shadow-sm mt-auto cursor-pointer
+              transform transition-all duration-300 hover:scale-[1.03] active:scale-95 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50
               ${offer.button}
             `}>
-              Select Plan
-            </button>
-          </div>
-        ))}
+                {offer.buttonLabel || (offer.action === 'contact' ? 'Get a quote' : 'Select Plan')}
+              </button>
+            </div>
+          </div>))}
       </div>
     </div>
   );

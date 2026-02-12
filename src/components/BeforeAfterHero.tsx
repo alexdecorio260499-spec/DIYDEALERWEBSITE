@@ -10,15 +10,15 @@ const BeforeAfterHero: React.FC = () => {
             {/* Text Overlay - Relative to ensure container grows with content */}
             <div id="visible-offers" className="relative z-10 flex flex-col items-center justify-start pt-20 md:pt-24 pb-20 px-4 text-center max-w-6xl mx-auto scroll-mt-24">
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-[#d4e157] drop-shadow-lg mb-6 leading-tight">
-                    See it, love it, build it
+                    Finally feel proud of your garden
                 </h1>
 
-                <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 drop-shadow-md font-light">
-                    Stop guessing. Visualise your Outdoor space with realistic Staging and professional landscaping before investing thousands in the wrong setup.
+                <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 drop-shadow-md font-light">
+                    Stop second-guessing every decision.<br className="hidden md:block" /> See exactly how your outdoor space can look before you spend money, time, or energy fixing mistakes.
                 </p>
 
-                <p className="text-xl md:text-2xl text-white/95 font-bold tracking-wide uppercase drop-shadow-md mb-[37px]">
-                    Save time, save money, enjoy the process
+                <p className="text-xl md:text-2xl text-white/95 font-bold tracking-wide drop-shadow-md mb-[37px]">
+                    Thoughtful garden design, visualised clearly, so you can build with confidence.
                 </p>
                 <div className="hidden" />
             </div>
