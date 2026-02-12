@@ -37,7 +37,7 @@ const App: React.FC = () => {
           title: 'Garden Clarity',
           price: '€59',
           // originalPrice: '€50',
-          description: 'See the potential in your space before, have confidence before investing',
+          description: 'See the potential in your space, have confidence before investing',
           popular: false,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
           border: 'border-[#5cb25d]/30',

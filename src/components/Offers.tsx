@@ -22,7 +22,7 @@ export interface Offer {
 const offers: Offer[] = [
   {
     title: "Garden Clarity",
-    tagline: "See the potential in your space before, have confidence before investing",
+    tagline: "See the potential in your space, have confidence before investing",
     price: "€59",
     // originalPrice: "€50", // Removed as per new copy implies single price
     description: '',
