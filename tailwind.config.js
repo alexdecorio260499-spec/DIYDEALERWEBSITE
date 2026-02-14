@@ -7,24 +7,28 @@ export default {
     theme: {
         extend: {
             colors: {
+                'gsd-cream': '#f4f4f3',
+                'gsd-black': '#1a1a1a',
+                'gsd-grey': '#54595f',
+                'gsd-olive': '#8f9483', // Muted olive/sage
                 primary: {
-                    DEFAULT: '#142814', // Deep Forest Green
-                    foreground: '#FFFFFF',
+                    DEFAULT: '#1a1a1a',
+                    foreground: '#f4f4f3',
                 },
                 secondary: {
-                    DEFAULT: '#857050', // Darker Earthy Gold
+                    DEFAULT: '#8f9483',
                     foreground: '#FFFFFF',
                 },
                 accent: {
-                    DEFAULT: '#F0FDF4', // Soft Mint
-                    foreground: '#142814',
+                    DEFAULT: '#f4f4f3',
+                    foreground: '#1a1a1a',
                 },
-                background: '#F8FAFC',
-                text: '#1E293B',
+                background: '#f4f4f3',
+                text: '#54595f',
             },
             fontFamily: {
-                sans: ['Poppins', 'sans-serif'],
-                serif: ['Poppins', 'serif'],
+                sans: ['"Open Sans"', 'sans-serif'],
+                serif: ['"Cormorant Garamond"', 'serif'],
             },
             spacing: {
                 'xs': '4px',

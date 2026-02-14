@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import BeforeAfterHero from './components/BeforeAfterHero';
 import Offers, { Offer } from './components/Offers';
-import Booster from './components/Booster';
+import Intro from './components/Intro';
 import Footer from './components/Footer';
 import Checkout from './components/Checkout';
 import MandatoryInfoForm from './components/MandatoryInfoForm';
+import Testimonials from './components/Testimonials';
 import luxuryGardenBg from './assets/luxury-garden-after.jpg';
 
 import About from './components/About';
@@ -36,7 +37,6 @@ const App: React.FC = () => {
         'quick-vision': {
           title: 'Garden Clarity',
           price: '€59',
-          // originalPrice: '€50',
           description: 'See the potential in your space, have confidence before investing',
           popular: false,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
@@ -54,7 +54,6 @@ const App: React.FC = () => {
         'dual-vision': {
           title: 'The Complete Vision',
           price: '€89',
-          // originalPrice: '€90',
           description: 'Finally know exactly what your garden should look like. You won’t just “have ideas.” You’ll have direction.',
           popular: true,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
@@ -72,7 +71,6 @@ const App: React.FC = () => {
         'signature-design': {
           title: 'Signature Design',
           price: 'On quotation only',
-          // originalPrice: '€399',
           description: 'A contractor-ready plan. No guesswork. No expensive mistakes. This isn’t inspiration, it’s execution',
           popular: false,
           gradient: 'from-[#1A3C28] via-[#244F35] to-[#2E6142]',
@@ -152,12 +150,13 @@ const App: React.FC = () => {
           <>
             <BeforeAfterHero />
 
-            {/* Offers overlap the bottom of the Hero or sit right below */}
-            <div id="offers" className="relative z-20 -mt-20 md:-mt-24 px-4">
+            <Intro />
+
+            <div id="offers" className="relative z-20 px-4 bg-gsd-cream">
               <Offers onSelectPlan={handleSelectPlan} />
             </div>
 
-            <Booster />
+            <Testimonials />
           </>
         )}
         {currentPage === 'about' && <About />}
